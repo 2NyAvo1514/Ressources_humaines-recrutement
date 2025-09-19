@@ -1,0 +1,262 @@
+/* Global styles */
+body {
+    background-color: #222222; /* Fond sombre pour la page */
+    color: white; /* Texte en blanc pour contraster avec le fond sombre */
+    font-family: Arial, sans-serif; /* Police plus moderne */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #f1f1f1; /* Lien clair */
+}
+
+a:hover {
+    color: #9b4caf; /* Lien au survol avec une couleur douce */
+}
+
+/* Styles pour la zone de connexion */
+.login_case {
+    max-width: 350px;
+    margin: 100px auto;
+    padding: 30px;
+    text-align: center;
+    background-color: #333333; /* Fond gris foncé */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+}
+
+.login_case h2 {
+    font-size: 26px;
+    margin-bottom: 30px;
+    color: #f1f1f1; /* Texte en blanc */
+}
+
+.login_case input[type="text"], 
+.login_case input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #444444; /* Bordure gris foncé */
+    border-radius: 4px; /* Coins arrondis */
+    background-color: #222222; /* Fond sombre pour les champs */
+    color: white; /* Texte blanc dans les champs */
+    font-size: 16px;
+}
+
+.login_case input[type="text"]:focus, 
+.login_case input[type="password"]:focus {
+    border-color: #9b4caf; /* Bordure violette au focus */
+    outline: none;
+}
+
+.login_case button {
+    width: 100%;
+    padding: 12px;
+    background-color: #9b4caf; /* Bouton violet */
+    color: white; /* Texte blanc sur bouton */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login_case button:hover {
+    background-color: #7a3e8c; /* Couleur du bouton au survol */
+}
+
+/* Liens sous le formulaire */
+.login_case h4 {
+    color: #f1f1f1; /* Texte clair pour le lien */
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.login_case h4:hover {
+    color: #9b4caf; /* Changement de couleur au survol */
+}
+
+/* Styles pour l'accès à l'administration */
+a {
+    color: #f1f1f1;
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+a:hover {
+    color: #9b4caf; /* Changement de couleur pour le lien */
+}
+
+/* Styles de l'en-tête pour l'administration */
+.admin-header {
+    background-color: #222222; /* Fond noir pour l'administration */
+    color: white; /* Texte blanc */
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+/* Table */
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #444444; /* Bordure grise */
+}
+
+table th {
+    background-color: #333333; /* Fond gris foncé pour l'en-tête */
+    color: white; /* Texte en blanc */
+}
+
+table tr:nth-child(even) {
+    background-color: #444444; /* Lignes paires avec un fond gris plus clair */
+}
+
+table tr:hover {
+    background-color: #555555; /* Changement de couleur au survol des lignes */
+}
+
+
+/* Conteneur principal pour disposer les 2 divs */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%; /* La largeur totale de l'élément contenant les deux sections */
+    gap: 30px;
+}
+
+/* Section contenant le formulaire */
+.form-section {
+    background-color: #34495e; /* Fond plus clair pour chaque section */
+    border-radius: 10px;
+    padding: 20px;
+    width: 48%; /* Chaque section occupe 48% de la largeur */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Style des champs de saisie */
+input[type="number"], input[type="submit"] {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ecf0f1;
+}
+
+/* Style du bouton */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #1abc9c; /* Couleur du bouton */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #16a085; /* Couleur au survol */
+}
+
+.cadeaux-container {
+    display: flex;
+    justify-content: space-between; /* Place les sections gauche et droite */
+    width: 80%; /* La largeur totale de l'élément contenant les deux sections */
+    gap: 30px; /* Espace entre les sections */
+}
+
+.cadeaux-section {
+    background-color: #34495e; /* Fond des sections avec une nuance plus claire */
+    border-radius: 10px; /* Coins arrondis pour une présentation plus douce */
+    padding: 20px;
+    width: 48%; /* Largeur des sections, ajustable */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease; /* Transition pour un léger effet au survol */
+}
+
+.cadeaux-section:hover {
+    transform: translateY(-10px); /* Effet de survol, déplace légèrement la section */
+}
+
+.cadeaux-section h1 {
+    text-align: center;
+    color: #ecf0f1;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+li img {
+    margin-right: 10px;
+    width: 80px; /* Largeur des images */
+    height: auto;
+}
+
+p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #ecf0f1;
+}
+
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #1abc9c; /* Couleur du bouton */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #16a085; /* Changement de couleur au survol */
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #1abc9c; /* Couleur de lien verte */
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}

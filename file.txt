@@ -1,0 +1,24 @@
+Fonctionnalités :
+
+    • Fonctionnalités prioritaires/ essentielles :
+        -	Tri CV :
+                    ▪ Tri / filtre en fonction du poste
+                    ▪ Tri en fonction du statut
+                    ▪ Tri en fonction des deux
+        -	Recherche candidat :
+            • Rechercher un candidat en fonction de son nom
+            • Recherche un candidat en fonction d’un mot clé
+            • Modification du statut du candidat en lu si le RH a check
+        -	Filtrage des candidats :
+                ◦ Filtrer en multicritères ou un (importance du requête)
+        -	Migration des candidats :
+            • Ajout des scores des candidats 
+            • Validation de la candidature / Refus
+            • Modification du statut du candidat en validé
+            • Création d’un nouveau employés et ajout dans l’historique(employéesPoste)
+    
+    • Fonctionnalités possibles utiles
+      -	Création de candidature
+      -	Liste de candidature
+      -	Liste des employés actifs
+

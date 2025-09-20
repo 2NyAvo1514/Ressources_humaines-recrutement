@@ -8,5 +8,6 @@
 <body>
     <h1>Page Ressources Humaines</h1>
     <a href="recherche"><button>Rechercher candidature</button></a>
+    <a href=""></a>
 </body>
 </html>

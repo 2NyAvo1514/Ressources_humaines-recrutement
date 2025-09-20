@@ -564,14 +564,14 @@
                         <button type="submit" class="btn btn-accept">Restaurer</button>
                     </form>
                 <?php else: ?>
-                    <form action="changeStatut" method="get" style="display: inline;">
+                    <form action="<?= Flight::get('flight.base_url') ?>/changeStatut" method="get" style="display: inline;">
                         <input type="hidden" name="idCandidat" value="<?= htmlspecialchars($candidat['idCandidat']) ?>">
                         <button type="submit" name="statut" value="1" class="btn btn-accept">
                             ✓ Accepter le candidat
                         </button>
                     </form>
 
-                    <form action="changeStatut" method="get" id="statutForm" style="display: inline;">
+                    <form action="<?= Flight::get('flight.base_url') ?>/changeStatut" method="get" id="statutForm" style="display: inline;">
                         <input type="hidden" name="idCandidat" value="<?= htmlspecialchars($candidat['idCandidat']) ?>">
                         <input type="hidden" name="statut" id="hiddenStatut">
                         <button type="button" onclick="ouvrirPopup()" class="btn btn-reject">

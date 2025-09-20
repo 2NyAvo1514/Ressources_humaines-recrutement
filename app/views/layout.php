@@ -129,7 +129,7 @@
       <a href="<?= Flight::get('flight.base_url') ?>/annonce/liste" class="<?= ($_SERVER['REQUEST_URI'] == '/annonce/liste') ? 'active' : '' ?>">📄 Liste des annonces</a>
     </div>
 
-    <a href="employes" class="<?= ($_SERVER['REQUEST_URI'] == '/employes') ? 'active' : '' ?>">
+    <a href="<?= Flight::get('flight.base_url') ?>/employes" class="<?= ($_SERVER['REQUEST_URI'] == '/employes') ? 'active' : '' ?>">
       <i class="fas fa-users"></i> <span>Employés</span>
     </a>
     <a href="statistiques" class="<?= ($_SERVER['REQUEST_URI'] == '/statistiques') ? 'active' : '' ?>">

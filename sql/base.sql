@@ -90,15 +90,12 @@ create table rh_candidat_poste (
 create table rh_employe (
     idEmploye int auto_increment primary key,
     idCandidat int,
-    idPoste int,
-    foreign key (idCandidat) references rh_candidat(idCandidat),
-    foreign key (idPoste) references rh_poste(idPoste)
+    foreign key (idCandidat) references rh_candidat(idCandidat)
 );
 
 create table rh_employe_poste(
     idEmployePoste int auto_increment primary key,
     idEmploye int,
-    idPoste int,
     dateEmployePoste date,
     foreign key (idEmploye) references rh_employe(idEmploye),
     foreign key (idPoste) references rh_poste(idPoste)
@@ -180,7 +177,21 @@ create table rh_candidat_reponse (
     foreign key (idReponse) references rh_reponse(idReponse)
 );
 
+create table rh_mouvement (
+    idMouvement int auto_increment primary key,
+    nomMouvement varchar(255)
+);
+
+create table rh_employe_mouvement (
+    idEmployeMouvement int auto_increment primary key,
+    idEmploye int ,
+    idMouvement int,
+    foreign key (idEmploye) references rh_employe(idEmploye),
+    foreign key (idMouvement) references rh_mouvement(idMouvement)
+);
+
 alter table rh_poste add idDomaine int;
 alter table rh_poste add constraint fk_poste_domaine foreign key (idDomaine) references rh_domaine(idDomaine); 
 alter table rh_poste add descriPoste text;
+alter table rh_employe_mouvement add dateMouvement date;
 

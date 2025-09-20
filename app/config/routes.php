@@ -1,9 +1,9 @@
 <?php
 
-use app\controllers\ApiExampleController;
+// use app\controllers\ApiExampleController;
 use app\controllers\RechercheController;
 use app\controllers\AnnonceController;
-use app\controllers\MigrationController;
+use app\controllers\EmployeController;
 // ======
 
 use app\controllers\triController;
@@ -56,6 +56,9 @@ $router->get('/annonce/liste', [$annonceController, 'liste']);
 // 	// $_SESSION['username'] = $_SESSION['username'];
 //     Flight::render('depot');
 // });
+
+$employeController = new EmployeController();
+$router->get('/employes', [$employeController,'index']);
 
 // =====================
 $tri_entretien_Controller = new triEntretienController();
@@ -116,7 +119,7 @@ $router->get('/changeStatut', function() use ($tri_entretien_Controller) {
 
     if( $statut==0){
         Flight::triEntretienModel()->changeStatutRejet($statut, $idCandidat) ;
-        Flight::redirect("../../formEntretien");
+        Flight::redirect("/formEntretien");
     } else {
         
         $test = Flight::triEntretienModel()->isAlreadyTeste($idCandidat);
@@ -125,7 +128,7 @@ $router->get('/changeStatut', function() use ($tri_entretien_Controller) {
         if($test==1 && $entretenu==0){
             Flight::render('formScoreEntretien', ['candidat' => $idCandidat]);
         } else if($test==0){
-            Flight::redirect("../../test-qcm");
+            Flight::redirect("/test-qcm");
 
             // passer faire une teste
         }else if($entretenu==1){

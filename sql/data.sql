@@ -35,6 +35,8 @@ insert into rh_poste (nomPoste) values
 insert into rh_status (nomStatus) values 
 ('non-lue'),
 ('lue'),
+('entretien-non'),
+('entretien-oui'),
 ('acceptée'),
 ('refusée');
 
@@ -97,9 +99,9 @@ insert into rh_candidat_poste (idCandidat, idPoste) values
 -- Status candidature
 insert into rh_status_candidat (idCandidat, idStatus, dateStatus) values
 (1, 2, '2025-09-01'), -- lue
-(2, 1, '2025-09-02'), -- non lue
-(3, 3, '2025-09-05'), -- acceptée
-(4, 4, '2025-09-06'); -- refusée
+(2, 1, '2025-09-02'),
+(3, 5, '2025-09-03'),
+(4, 5, '2025-09-04'); -- non lue
 
 -- Exemple QCM domaine informatique
 insert into rh_qcm (idDomaine) values (3);
@@ -137,4 +139,20 @@ UPDATE rh_poste
 SET descriPoste = "Assure l'installation, la maintenance et le dépannage du réseau informatique"
 WHERE idPoste = 4;
 
+insert into rh_employe(idCandidat) values 
+(3),
+(4);
 
+insert into rh_mouvement(nomMouvement) values
+('embauche'),('demission');
+
+insert into rh_employe_mouvement(idEmploye,idMouvement,dateMouvement) values 
+(1,1,'2025-09-03'),
+(2,1,'2025-09-04');
+
+select *
+from rh_employe emp
+left join rh_candidat cdd 
+    on emp.idCandidat = cdd.idCandidat
+join rh_status_candidat st
+    on st.idCandidat = cdd.idCandidat

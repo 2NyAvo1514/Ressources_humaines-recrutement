@@ -1,5 +1,7 @@
 <?php
+
 namespace app\models;
+
 use PDO;
 
 class triEntretienModel
@@ -13,7 +15,7 @@ class triEntretienModel
 
     public function getDetailCandidats($idCandidat)
     {
-    $sql = "
+        $sql = "
         SELECT 
             c.idCandidat,
             c.nom,
@@ -56,19 +58,19 @@ class triEntretienModel
                 LIMIT 1
             )
         LEFT JOIN rh_status stt ON stc.idStatus = stt.idStatus
-        WHERE c.idCandidat = ".$idCandidat."
+        WHERE c.idCandidat = " . $idCandidat . "
         GROUP BY c.idCandidat
     ";
 
-    $stmt = $this->db->prepare($sql);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
 
     public function getAllCandidats($statut = null, $modeTri = null)
-{
-    $sql = "
+    {
+        $sql = "
         SELECT 
             c.idCandidat,
             c.nom,
@@ -95,45 +97,42 @@ class triEntretienModel
         WHERE 1=1
     ";
 
-    if (!empty($statut)) {
-        if ($statut == 6) {
-            $sql .= " AND sc.idStatus = 6 ";
+        if (!empty($statut)) {
+            if ($statut == 6) {
+                $sql .= " AND sc.idStatus = 6 ";
+            } else {
+                $sql .= " AND sc.idStatus = :statut AND sc.idStatus != 6 ";
+            }
         } else {
-            $sql .= " AND sc.idStatus = :statut AND sc.idStatus != 6 ";
+            $sql .= " AND (sc.idStatus IS NULL OR sc.idStatus != 6) ";
         }
-    } else {
-        $sql .= " AND (sc.idStatus IS NULL OR sc.idStatus != 6) ";
-    }
 
-    $sql .= " GROUP BY c.idCandidat ";
+        $sql .= " GROUP BY c.idCandidat ";
 
-    if (!empty($modeTri)) {
-        if ($modeTri == 1) {
-            $sql .= " ORDER BY totalScore ASC ";
-        } elseif ($modeTri == 2) {
-            $sql .= " ORDER BY totalScore DESC ";
+        if (!empty($modeTri)) {
+            if ($modeTri == 1) {
+                $sql .= " ORDER BY totalScore ASC ";
+            } elseif ($modeTri == 2) {
+                $sql .= " ORDER BY totalScore DESC ";
+            }
         }
+
+        $stmt = $this->db->prepare($sql);
+
+        if (!empty($statut) && $statut != 6) {
+            $stmt->bindValue(":statut", $statut, PDO::PARAM_INT);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    $stmt = $this->db->prepare($sql);
-
-    if (!empty($statut) && $statut != 6) {
-        $stmt->bindValue(":statut", $statut, PDO::PARAM_INT);
-    }
-
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
-    
-
-
-    public function changeStatutRejet($statut, $idCandidat) 
+    public function changeStatutRejet($statut, $idCandidat)
     {
 
         if ($statut === 0) {
             $idStatus = 6;
-        } 
+        }
 
         $sql = "
             INSERT INTO rh_status_candidat (idCandidat, idStatus, dateStatus)
@@ -151,7 +150,7 @@ class triEntretienModel
 
     public function changeStatutLu($statut, $idCandidat)
     {
-        if ($statut == 1) { 
+        if ($statut == 1) {
             $idStatus = 2;
             $sql = "
                 INSERT INTO rh_status_candidat (idCandidat, idStatus, dateStatus)
@@ -165,9 +164,9 @@ class triEntretienModel
             ]);
 
             return $this->db->lastInsertId();
-        }   
+        }
 
-        return null; 
+        return null;
     }
 
 
@@ -235,17 +234,17 @@ class triEntretienModel
     public function changeStatutLuRejet($idCandidat)
     {
         $idStatus = 2;
-            $sql = "
+        $sql = "
                 INSERT INTO rh_status_candidat (idCandidat, idStatus, dateStatus)
                 VALUES (:idCandidat, :idStatus, NOW())
             ";
 
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute([
-                ':idCandidat' => $idCandidat,
-                ':idStatus'   => $idStatus
-            ]);
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            ':idCandidat' => $idCandidat,
+            ':idStatus'   => $idStatus
+        ]);
 
-            return $this->db->lastInsertId();
+        return $this->db->lastInsertId();
     }
 }

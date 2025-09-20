@@ -1,0 +1,1 @@
+[2025-09-19 11-56-38] Warning: Undefined variable $val in D:\xampp\htdocs\Recrutement\vendor\tracy\tracy\src\Tracy\Dumper\Describer.php:293  @  http://localhost/Recrutement/changeStatut?idCandidat=2&statut=1  @@  exception--2025-09-19--11-56--a7c8490223.html

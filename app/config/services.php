@@ -6,7 +6,7 @@ use flight\debug\database\PdoQueryCapture;
 use Tracy\Debugger;
 use app\models\RechercheModel;
 use app\models\AnnonceModel;
-use app\models\MigrationModel;
+use app\models\EmployeModel;
 // =========
 
 use app\models\triModel;
@@ -41,8 +41,8 @@ Flight::map('annonceModel', function () {
     return new AnnonceModel(db: Flight::db());
 });
 
-Flight::map('migrationModel', function () {
-    return new MigrationModel(db: Flight::db());
+Flight::map('employeModel', function () {
+    return new EmployeModel(db: Flight::db());
 });
 
 // =========== 

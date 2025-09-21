@@ -7,6 +7,7 @@ use Tracy\Debugger;
 use app\models\RechercheModel;
 use app\models\AnnonceModel;
 use app\models\EmployeModel;
+use app\models\PlanningModel;
 // =========
 
 use app\models\triModel;
@@ -43,6 +44,10 @@ Flight::map('annonceModel', function () {
 
 Flight::map('employeModel', function () {
     return new EmployeModel(db: Flight::db());
+});
+
+Flight::map('planningModel', function () {
+    return new PlanningModel(db: Flight::db());
 });
 
 // =========== 

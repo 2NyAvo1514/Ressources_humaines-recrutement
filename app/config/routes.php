@@ -4,6 +4,7 @@
 use app\controllers\RechercheController;
 use app\controllers\AnnonceController;
 use app\controllers\EmployeController;
+use app\controllers\PlanningController;
 // ======
 
 use app\controllers\triController;
@@ -59,6 +60,10 @@ $router->get('/annonce/liste', [$annonceController, 'liste']);
 
 $employeController = new EmployeController();
 $router->get('/employes', [$employeController,'index']);
+$planningController = new PlanningController();
+$router->get('/planning', [$planningController,'index']);
+$router->get('/planning/events', [$planningController,'events']);
+
 
 // =====================
 $tri_entretien_Controller = new triEntretienController();

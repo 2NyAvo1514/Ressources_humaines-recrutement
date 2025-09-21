@@ -150,6 +150,10 @@ insert into rh_employe_mouvement(idEmploye,idMouvement,dateMouvement) values
 (1,1,'2025-09-03'),
 (2,1,'2025-09-04');
 
+insert into rh_entretien(idCandidat,dateEntretien) values
+(3,'2025-09-02 09:00:00'),
+(4,'2025-09-03 08:30:00');
+
 select *
 from rh_employe emp
 left join rh_candidat cdd 

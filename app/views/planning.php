@@ -73,7 +73,7 @@
         <?php if (!empty($data)): ?>
           <?php foreach ($data as $d): ?>
             <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-              <input type="hidden" value="<?= $d['idCandidat']?>">
+              <input type="hidden" value="<?= $d['idCandidat'] ?>">
               <div class='fc-even-maint'><?= $d['nom'] . " " . $d['prenom']; ?></div>
             </div>
           <?php endforeach; ?>
@@ -117,7 +117,7 @@
           var id = info.event.id;
           var candidat = info.event.title;
           var start = info.event.start.toISOString();
-          console.log("id: ",id," - Candidat: ", candidat, " - Entretien: ", start);
+          console.log("id: ", id, " - Candidat: ", candidat, " - Entretien: ", start);
 
           fetch('/Recrutement/planning/store', {
               method: 'POST',
@@ -136,6 +136,19 @@
             .catch(err => {
               console.error("❌ Erreur:", err);
             });
+        },
+        eventClick: function(info) {
+          // Empêche que FullCalendar ouvre une popup par défaut
+          info.jsEvent.preventDefault();
+
+          // Récupère l'id du candidat (que tu as bien mis dans `eventData`)
+          var id = info.event.id;
+
+          if (id) {
+            // Redirection vers la page du candidat
+            // window.location.href = "/Recrutement/candidat/" + id;
+            console.log(id);
+          }
         }
       });
       calendar.render();
@@ -146,7 +159,7 @@
       new FullCalendar.Draggable(containerEl, {
         itemSelector: '.fc-event',
         eventData: function(eventEl) {
-          return { 
+          return {
             id: eventEl.querySelector("input[type=hidden]").value,
             title: eventEl.innerText.trim()
           }

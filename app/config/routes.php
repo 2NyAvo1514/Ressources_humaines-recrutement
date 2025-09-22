@@ -63,6 +63,12 @@ $router->get('/employes', [$employeController,'index']);
 $planningController = new PlanningController();
 $router->get('/planning', [$planningController,'index']);
 $router->get('/planning/events', [$planningController,'events']);
+$router->post('/planning/store', function()use($planningController){
+    $data=Flight::request()->data->getData();
+    $id = $data['candidat'];
+    $date = $data['dateEntretien'];
+    $planningController->saveEntretien($id,$date);
+});
 
 
 // =====================

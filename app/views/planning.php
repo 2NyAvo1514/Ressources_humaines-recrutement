@@ -13,7 +13,7 @@
     header {
       background: #2c3e50;
       position: fixed;
-      width: 100%;
+      width: 75%;
       color: #fff;
       padding: 20px;
       text-align: center;
@@ -73,6 +73,7 @@
         <?php if (!empty($data)): ?>
           <?php foreach ($data as $d): ?>
             <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+              <input type="hidden" value="<?= $d['idCandidat']?>">
               <div class='fc-even-maint'><?= $d['nom'] . " " . $d['prenom']; ?></div>
             </div>
           <?php endforeach; ?>
@@ -111,7 +112,31 @@
             arg.draggedEl.parentNode.removeChild(arg.draggedEl);
           }
         },
-        events: '/Recrutement/planning/events' // 🔥 va chercher les données en JSON
+        events: '/Recrutement/planning/events', // 🔥 va chercher les données en JSON
+        eventReceive: function(info) {
+          var id = info.event.id;
+          var candidat = info.event.title;
+          var start = info.event.start.toISOString();
+          console.log("id: ",id," - Candidat: ", candidat, " - Entretien: ", start);
+
+          fetch('/Recrutement/planning/store', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                candidat: id,
+                dateEntretien: start
+              })
+            })
+            .then(res => res.json())
+            .then(data => {
+              console.log("✅ Sauvegardé :", data);
+            })
+            .catch(err => {
+              console.error("❌ Erreur:", err);
+            });
+        }
       });
       calendar.render();
 
@@ -121,7 +146,8 @@
       new FullCalendar.Draggable(containerEl, {
         itemSelector: '.fc-event',
         eventData: function(eventEl) {
-          return {
+          return { 
+            id: eventEl.querySelector("input[type=hidden]").value,
             title: eventEl.innerText.trim()
           }
         }

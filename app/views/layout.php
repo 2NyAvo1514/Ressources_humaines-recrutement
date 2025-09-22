@@ -133,7 +133,7 @@
       <i class="fas fa-users"></i> <span>Employés</span>
     </a>
     <a href="planning" class="<?= ($_SERVER['REQUEST_URI'] == '/planning') ? 'active' : '' ?>">
-      <i class="fas fa-chart-line"></i> <span>Planning Entretiens</span>
+      <i class="fas fa-calendar"></i> <span>Planning Entretiens</span>
     </a>
   </div>
 

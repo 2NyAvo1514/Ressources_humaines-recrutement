@@ -21,13 +21,20 @@ class PlanningController {
         $events = [];
         foreach ($list as $li) {
             $events[] = [
+                'id'=> $li['idCandidat'],
                 'title' => $li['nom']." ".$li['prenom'],
                 'start'=> $li['dateEntretien'],
-                'color' => $li['nomStatus'] === 'entretien-non' ? 'yellow' : 'green',
+                'color' => $li['nomStatus'] === 'entretien-non' ? 'lightblue' : 'green',
                 'textColor' => $li['nomStatus'] === 'entretien-non' ? 'black' : 'white',
             ];
         }
         Flight::json($events);
+    }
+
+    public function saveEntretien($id,$date) {
+        $sqlDate = date('Y-m-d H:i:s',strtotime($date));
+        Flight::planningModel()->saveEntretien($id,$sqlDate);
+        Flight::redirect('/planning');
     }
 }
 

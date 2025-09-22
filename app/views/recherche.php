@@ -132,7 +132,7 @@
   <h4>Recherche par colonne</h4>
   <form method="get" action="<?= Flight::get('flight.base_url') ?>/recherche">
     <button type="submit">🔍 Rechercher</button><br><br>
-    <table>
+    <table style="overflow-y: scroll;display:block;height:400px">
       <thead>
         <tr>
           <th>Nom<br><input type="text" name="nom" value="<?= htmlspecialchars($criteres['nom']) ?>"></th>
